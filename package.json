@@ -1,5 +1,5 @@
 {
-  "name": "base64-to-file-converter",
+  "name": "base64-decoder",
   "version": "1.0.2",
   "description": "",
   "main": "index.js",
@@ -8,21 +8,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/avillarubia/base64-to-file-converter.git"
+    "url": "git+https://github.com/avillarubia/base64-decoder.git"
   },
   "keywords": [
     "base64",
     "file",
     "converter",
     "base64-to-file",
-    "base64-to-file-converter"
+    "base64-decoder"
   ],
   "author": "Aljohn Villarubia",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/avillarubia/base64-to-file-converter/issues"
+    "url": "https://github.com/avillarubia/base64-decoder/issues"
   },
-  "homepage": "https://github.com/avillarubia/base64-to-file-converter#readme",
+  "homepage": "https://github.com/avillarubia/base64-decoder#readme",
   "dependencies": {
     "shortid": "^2.2.15"
   }
