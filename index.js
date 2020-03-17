@@ -1,26 +1,20 @@
 const fs = require('fs')
-const path = require('path')
 const shortid = require('shortid')
 const alphanumeric = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@'
 shortid.characters(alphanumeric)
 
-function convertBase64ToFile(dir, base64String) { //dir = 'public\\uploads\\'
+function convertBase64ToFile(dir, base64String) {
     const splits = base64String.split(';base64,')//data:image/png;base64,
     const format = splits[0].split('/')[1]
     const base64 = splits[1]
 
     let filenameFormat
     try {
-        const _path = path.join(__dirname, dir)
-
-        createDir(_path)
-
         const id = shortid.generate()
-        const _filenameFormat = `${id}.${format}`
+        filenameFormat = `${id}.${format}`
 
-        write(_path, _filenameFormat, base64)
-
-        filenameFormat = _filenameFormat
+        createDir(dir)
+        write(dir, filenameFormat, base64)
     } catch (error) {
         console.log(error)
     }
@@ -28,13 +22,13 @@ function convertBase64ToFile(dir, base64String) { //dir = 'public\\uploads\\'
     return filenameFormat
 }
 
-function write(_path, _filenameFormat, base64) {
-    fs.writeFileSync(_path + _filenameFormat, base64, { encoding: 'base64' })
+function write(dir, filenameFormat, base64) {
+    fs.writeFileSync(dir + filenameFormat, base64, { encoding: 'base64' })
 }
 
-function createDir(_path) {
-    if (!fs.existsSync(_path))
-        fs.mkdirSync(_path, { recursive: true })
+function createDir(dir) {
+    if (!fs.existsSync(dir))
+        fs.mkdirSync(dir, { recursive: true })
 }
 
 module.exports = {
